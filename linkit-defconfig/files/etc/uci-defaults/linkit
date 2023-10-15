@@ -1,0 +1,40 @@
+#! /bin/ash
+
+firstboot=$(uci get system.@system[0].firstboot)
+
+if [ "$firstboot" == "1" ]; then
+        echo "Already set up. Leaving"
+        exit
+fi
+
+echo "Setting up wireless"
+uci del wireless.default_radio0
+uci set wireless.ap=wifi-iface
+uci set wireless.ap.device='radio0'
+uci set wireless.ap.network='lan'
+uci set wireless.ap.mode='ap'
+uci set wireless.ap.ssid='Linkit_Smart_7688'
+uci set wireless.ap.encryption='psk2'
+uci set wireless.ap.key='linkitsmart'
+uci set wireless.radio0.disabled='0'
+uci commit wireless
+
+echo "Setting up LAN"
+uci set network.lan.ipaddr='192.168.100.1'
+uci commit network
+
+echo "Setting up LEDs"
+uci set system.led_wifi.trigger='none'
+uci set system.led_wifi.default='0'
+uci commit system
+
+echo "Removing linkit feed"
+sed -i "s/.*linkit$//g" /etc/opkg/distfeeds.conf
+
+echo "Setting up system"
+uci set system.@system[0].firstboot='1'
+uci set system.@system[0].hostname='linkit'
+uci commit system
+
+echo "Restarting network"
+service network restart
