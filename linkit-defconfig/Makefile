@@ -9,7 +9,9 @@ include $(INCLUDE_DIR)/package.mk
 define Package/linkit-defconfig
 	TITLE:=Linkit Smart 7688 default configuration
 	DEPENDS:=@TARGET_ramips_mt76x8_DEVICE_mediatek_linkit-smart-7688 \
-		+luci +uhttpd +openssh-sftp-server
+		+luci +uhttpd +openssh-sftp-server +libgpiod \
+		+kmod-fs-vfat +kmod-fs-exfat +block-mount \
+		+kmod-fs-ext4 +e2fsprogs
 	CATEGORY:=Board
 	DEFAULT:=y
 endef

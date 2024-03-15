@@ -28,13 +28,12 @@ uci set system.led_wifi.trigger='none'
 uci set system.led_wifi.default='0'
 uci commit system
 
-echo "Removing linkit feed"
-sed -i "s/.*linkit$//g" /etc/opkg/distfeeds.conf
-
 echo "Setting up system"
 uci set system.@system[0].firstboot='1'
 uci set system.@system[0].hostname='linkit'
 uci commit system
+
+sed -i "s/.*linkit$//g" /etc/opkg/distfeeds.conf
 
 echo "Restarting network"
 service network restart
