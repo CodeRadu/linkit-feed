@@ -7,13 +7,13 @@ This is a feed for the LinkIt Smart 7688 (not duo).
 ### 1. Install the build dependencies
 
 ```sh
-sudo apt install git g++ make libncurses5-dev subversion libssl-dev gawk libxml-parser-perl unzip wget python xz-utils
+sudo apt install git g++ make libncurses5-dev subversion libssl-dev gawk libxml-parser-perl unzip wget python3 xz-utils
 ```
 
 ### 2. Download the openwrt source code
 
 ```sh
-git clone -b openwrt-22.03 https://github.com/openwrt/openwrt.git
+git clone -b openwrt-23.05 https://github.com/openwrt/openwrt.git
 ```
 
 ### 3. Setup feeds
