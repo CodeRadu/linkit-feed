@@ -7,7 +7,7 @@ This is a feed for the LinkIt Smart 7688 (not duo).
 ### 1. Install the build dependencies
 
 ```sh
-sudo apt install git g++ make libncurses5-dev subversion libssl-dev gawk libxml-parser-perl unzip wget python3 xz-utils
+sudo apt install git g++ make libncurses5-dev subversion libssl-dev gawk libxml-parser-perl unzip wget python3 xz-utils flex
 ```
 
 ### 2. Download the openwrt source code
